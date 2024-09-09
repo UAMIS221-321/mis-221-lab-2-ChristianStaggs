@@ -5,9 +5,11 @@ double tip = GetTip();
 const double costOfSandwich = 4.75;
 const double costOfTopping = .55;
 const double discount = .10;
-double totalCostOfSandwich = TotalCostOfSandwich();
-double totalCostOfToppings = TotalCostOfToppings();
+double totalCostOfSandwich = TotalCostOfSandwich(costOfSandwich, numberOfSandwiches);
+double totalCostOfToppings = TotalCostOfToppings(costOfTopping, numberOfSandwiches);
 double baseCost = totalCostOfSandwich + totalCostOfToppings;
+double orderCost = GetOrderCost(tip, baseCost, discount);
+Console.WriteLine ("Your total is " + orderCost);
 
 static int GetNumberSandwiches() {
 Console.WriteLine("How many sandwiches?");
@@ -19,19 +21,21 @@ Console.WriteLine("How many toppings?");
 return int.Parse(Console.ReadLine());
 }
 
-static double TotalCostOfSandwich() {
-    costOfSandwich * numberOfSandwiches
+static double TotalCostOfSandwich(double costOfSandwich, int numberOfSandwiches) {
+
+   return costOfSandwich * numberOfSandwiches;
 }
 
-static double TotalCostOfToppings() {
-    costOfTopping * numberOfSandwiches
+static double TotalCostOfToppings(double costOfTopping, int numberOfSandwiches) {
+    return costOfTopping * numberOfSandwiches;
 }
 
 static double GetTip() {
-    Console.WriteLine("What percentage would you like to tip?");
-    return int.Parse(Console.ReadLine());
+    Console.WriteLine("How much would you like to tip?");
+    return double.Parse(Console.ReadLine());
 }
 
-static double OrderCost(){
-    return (tip + baseCost(1-discount));
+static double GetOrderCost(double tip, double baseCost, double discount){
+
+    return baseCost*(1-discount) + tip;
 }
