@@ -9,7 +9,7 @@ double totalCostOfSandwich = TotalCostOfSandwich(costOfSandwich, numberOfSandwic
 double totalCostOfToppings = TotalCostOfToppings(costOfTopping, numberOfSandwiches);
 double baseCost = totalCostOfSandwich + totalCostOfToppings;
 double orderCost = GetOrderCost(tip, baseCost, discount);
-Console.WriteLine ("Your total is " + orderCost);
+Console.WriteLine ("Your total is " + Math.Round(orderCost,2));
 
 static int GetNumberSandwiches() {
 Console.WriteLine("How many sandwiches?");
@@ -38,4 +38,5 @@ static double GetTip() {
 static double GetOrderCost(double tip, double baseCost, double discount){
 
     return baseCost*(1-discount) + tip;
+    
 }
